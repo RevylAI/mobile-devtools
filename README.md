@@ -119,6 +119,33 @@ figma_frames/           app_screenshots/          report.html
 
 ---
 
+### [Greenlight](https://github.com/RevylAI/greenlight)
+
+Pre-submission compliance scanner for the Apple App Store. Scans your source code, privacy manifests, IPA binaries, and App Store Connect metadata against Apple's Review Guidelines — catching rejection risks before Apple does.
+
+- Entirely offline, no account needed, runs in under a second
+- 30+ code pattern checks: private APIs, hardcoded secrets, payment violations, missing ATT
+- Privacy manifest validator: Required Reason APIs, tracking SDKs, PrivacyInfo.xcprivacy completeness
+- IPA binary inspector: Info.plist keys, app icons, framework privacy manifests
+- Supports Swift, Objective-C, React Native, and Expo projects
+
+```bash
+# One command — scans everything
+greenlight preflight /path/to/your/project
+
+# Include IPA for binary analysis
+greenlight preflight . --ipa build.ipa
+```
+
+| Scanner | What it checks |
+|---|---|
+| **metadata** | App name, version, bundle ID, icon, privacy policy URL, purpose strings |
+| **codescan** | Private APIs, secrets, payment violations, missing ATT, social login, placeholders |
+| **privacy** | PrivacyInfo.xcprivacy completeness, Required Reason APIs, tracking SDKs vs ATT |
+| **ipa** | Binary Info.plist, launch storyboard, app icons, app size, framework manifests |
+
+---
+
 ## How They Work
 
 Every tool follows the same pattern:

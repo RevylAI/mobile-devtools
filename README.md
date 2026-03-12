@@ -4,6 +4,14 @@
 
 These are real tools you can fork and run today. They're also blueprints — designed to show what's possible so your team can build internal tools tailored to your own workflows.
 
+| Tool | What it does |
+|---|---|
+| [**Security Scanner**](https://github.com/RevylAI/mobile-pentest-agent) | Static + dynamic penetration testing for Android and iOS apps |
+| [**PR Review Bot**](https://github.com/RevylAI/mobile-pr-reviewer) | Boots a device on every PR, validates the change, posts screenshots |
+| [**Visual Regression**](https://github.com/RevylAI/visual-regression) | Pixel-diffs screenshots between two builds to catch UI changes |
+| [**Figma Design Checker**](https://github.com/RevylAI/figma-design-checker) | Compares Figma frames against the real app to verify design fidelity |
+| [**Greenlight**](https://github.com/RevylAI/greenlight) | Pre-submission App Store compliance scanner — catches rejection risks offline |
+
 ---
 
 ## The Tools

@@ -204,7 +204,8 @@ Every tool needs two things:
 2. **An app uploaded to Revyl:**
    ```bash
    # Install the CLI
-   curl -fsSL https://get.revyl.ai | sh
+   brew install RevylAI/tap/revyl    # macOS
+   pip install revyl                  # or via pip
 
    # Create an app and upload a build
    revyl app create --name "MyApp" --platform android --json

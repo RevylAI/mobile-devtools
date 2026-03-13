@@ -1,6 +1,6 @@
 # Mobile DevTools
 
-**Open-source tools for mobile engineering teams.** Each tool uses [Revyl CLI](https://revyl.ai) to boot cloud devices, interact with apps using natural language, and capture evidence — combined with [Claude Code](https://claude.ai/code) for AI-powered automation.
+**Open-source tools for mobile engineering teams.** Each tool uses [Revyl CLI](https://github.com/RevylAI/revyl-cli) to boot cloud devices, interact with apps using natural language, and capture evidence — combined with [Claude Code](https://claude.ai/code) for AI-powered automation.
 
 These are real tools you can fork and run today. They're also blueprints — designed to show what's possible so your team can build internal tools tailored to your own workflows.
 
@@ -220,7 +220,7 @@ Every repo includes [Bug Bazaar](https://github.com/RevylAI/mobile-pr-reviewer/t
 
 ## Built With
 
-- **[Revyl CLI](https://revyl.ai)** — Cloud device provisioning and AI-grounded mobile app interaction
+- **[Revyl CLI](https://github.com/RevylAI/revyl-cli)** — Cloud device provisioning and AI-grounded mobile app interaction
 - **[Claude Code](https://claude.ai/code)** — AI agent for code analysis and orchestration
 - **[Claude Code Action](https://github.com/anthropics/claude-code-action)** — Run Claude in GitHub Actions
 

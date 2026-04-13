@@ -11,6 +11,7 @@ These are real tools you can fork and run today. They're also blueprints — des
 | [**Visual Regression**](https://github.com/RevylAI/visual-regression) | Pixel-diffs screenshots between two builds to catch UI changes |
 | [**Figma Design Checker**](https://github.com/RevylAI/figma-design-checker) | Compares Figma frames against the real app to verify design fidelity |
 | [**Greenlight**](https://github.com/RevylAI/greenlight) | Pre-submission App Store compliance scanner — catches rejection risks offline |
+| [**App Explorer**](https://github.com/RevylAI/app-explorer) | Maps every screen and user path in a mobile app — generates interactive navigation maps |
 
 ---
 
@@ -151,6 +152,31 @@ greenlight preflight . --ipa build.ipa
 | **codescan** | Private APIs, secrets, payment violations, missing ATT, social login, placeholders |
 | **privacy** | PrivacyInfo.xcprivacy completeness, Required Reason APIs, tracking SDKs vs ATT |
 | **ipa** | Binary Info.plist, launch storyboard, app icons, app size, framework manifests |
+
+### [App Explorer](https://github.com/RevylAI/app-explorer)
+
+Automated app screen mapping. Boots a cloud device, systematically explores every screen using AI-driven BFS navigation, and generates an interactive navigation map with screenshots of every screen and all user paths.
+
+- AI-powered exploration — Claude Code navigates the app, identifies screens, and maps transitions
+- Interactive viewer with React Flow graph, journey navigator, and screen details panel
+- Step through user paths with highlighting and prev/next navigation
+- Works on any Android or iOS app — no accessibility IDs or XPaths needed
+- Generates markdown reports with Mermaid navigation graphs
+
+```bash
+# Install the CLI
+pip install -e .
+
+# Open Claude Code and explore
+# > Explore the app at ./my-app.apk and map all screens
+```
+
+| Feature | How |
+|---|---|
+| Screen discovery | AI navigates and screenshots every reachable screen |
+| Transition mapping | Records which button/tap leads to which screen |
+| User path enumeration | DFS to find all distinct navigation paths |
+| Interactive viewer | React Flow graph with journey stepping and path highlighting |
 
 ---
 

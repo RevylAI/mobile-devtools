@@ -4,6 +4,24 @@
 
 These are real tools you can fork and run today. They're also blueprints — designed to show what's possible so your team can build internal tools tailored to your own workflows.
 
+## Start Here
+
+If you are trying Revyl locally, start with the browser-based login. You do not need to create and copy an API key for the first run.
+
+```bash
+# Install the Revyl CLI
+brew install RevylAI/tap/revyl    # macOS
+pip install revyl                 # or via pip
+
+# Sign in and verify your local setup
+revyl auth login
+revyl doctor
+```
+
+Then pick a tool below and follow its README. Tools that boot cloud devices will ask you to upload an app build to Revyl. API keys are still supported, but they are mainly for CI, automation, and other non-interactive environments.
+
+Want to try something with zero Revyl setup? [Greenlight](https://github.com/RevylAI/greenlight) runs entirely offline and does not require an account.
+
 | Tool | What it does |
 |---|---|
 | [**Security Scanner**](https://github.com/RevylAI/mobile-pentest-agent) | Static + dynamic penetration testing for Android and iOS apps |
@@ -182,7 +200,7 @@ pip install -e .
 
 ## How They Work
 
-Every tool follows the same pattern:
+Most tools that interact with a running app follow the same pattern:
 
 1. **Revyl CLI** boots a real device in the cloud and installs your app
 2. **Natural language targeting** — `revyl device tap --target "Add to Cart button"` — no accessibility IDs, no XPaths, no element inspectors
@@ -224,25 +242,26 @@ These tools are templates. The pattern for building your own:
 
 ## Getting Started
 
-Every tool needs two things:
+For local exploration, most cloud-device tools need two things:
 
-1. **Revyl API key** — [app.revyl.ai](https://app.revyl.ai) → Settings → API Keys
+1. **A signed-in Revyl CLI session:**
+   ```bash
+   revyl auth login
+   ```
 2. **An app uploaded to Revyl:**
    ```bash
-   # Install the CLI
-   brew install RevylAI/tap/revyl    # macOS
-   pip install revyl                  # or via pip
-
    # Create an app and upload a build
    revyl app create --name "MyApp" --platform android --json
    revyl build upload --skip-build --platform android --app "$APP_ID" --file app.apk --json --yes
    ```
 
+For GitHub Actions or other non-interactive environments, create a Revyl API key in [app.revyl.ai](https://app.revyl.ai) under Settings -> API Keys and set it as `REVYL_API_KEY`.
+
 Then fork any tool above and follow its README.
 
 ## Sample App
 
-Every repo includes [Bug Bazaar](https://github.com/RevylAI/mobile-pr-reviewer/tree/main/sample-app) — a React Native e-commerce app with intentional bugs for testing. It has 12 products, a cart, checkout flow, search, and filtering. You can swap it out for your own app.
+Several repos include sample apps you can use before wiring in your own app. [PR Review Bot](https://github.com/RevylAI/mobile-pr-reviewer/tree/main/sample-app) and [Visual Regression](https://github.com/RevylAI/visual-regression/tree/main/sample-app) include Bug Bazaar, a React Native e-commerce app with intentional bugs for testing. The Figma Design Checker repo includes its own sample app and example report assets.
 
 ## Built With
 

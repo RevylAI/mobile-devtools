@@ -30,7 +30,7 @@ Want to try something with zero Revyl setup? [Greenlight](https://github.com/Rev
 | [**Figma Design Checker**](https://github.com/RevylAI/figma-design-checker) | Compares Figma frames against the real app to verify design fidelity |
 | [**Greenlight**](https://github.com/RevylAI/greenlight) | Pre-submission App Store compliance scanner — catches rejection risks offline |
 | [**App Explorer**](https://github.com/RevylAI/app-explorer) | Maps every screen and user path in a mobile app — generates interactive navigation maps |
-| [**Device GIF Maker**](https://github.com/RevylAI/device-gif-maker) | Turns any flow into a clean looping GIF on a pristine device frame — for READMEs and tweets |
+| [**Device GIF Maker**](https://github.com/ethanzhoucool/device-gif-maker) | Turns any flow into a clean looping GIF on a pristine device frame — for READMEs and tweets |
 
 ---
 
@@ -199,7 +199,7 @@ pip install -e .
 
 ---
 
-### [Device GIF Maker](https://github.com/RevylAI/device-gif-maker)
+### [Device GIF Maker](https://github.com/ethanzhoucool/device-gif-maker)
 
 Turns any flow into a clean, seamlessly-looping GIF (and an MP4) framed in a pristine device mockup — the kind you drop into a README or a launch tweet. Write a few steps in YAML, point it at your app, and it drives a cloud device, screenshots each state, frames them, and stitches the loop.
 

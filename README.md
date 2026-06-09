@@ -31,6 +31,7 @@ Want to try something with zero Revyl setup? [Greenlight](https://github.com/Rev
 | [**Greenlight**](https://github.com/RevylAI/greenlight) | Pre-submission App Store compliance scanner — catches rejection risks offline |
 | [**App Explorer**](https://github.com/RevylAI/app-explorer) | Maps every screen and user path in a mobile app — generates interactive navigation maps |
 | [**Device GIF Maker**](https://github.com/ethanzhoucool/device-gif-maker) | Turns any flow into a clean looping GIF on a pristine device frame — for READMEs and tweets |
+| [**Redaction Checker**](https://github.com/ethanzhoucool/redaction-checker) | Verifies sensitive screens (payment, SSN) are obscured in the iOS app switcher / Android recents — MASVS-9 / PCI |
 
 ---
 
@@ -216,6 +217,26 @@ revyl-gif flows/my-flow.yaml
 | Flow | Result |
 |---|---|
 | `flows/ubert.yaml` — Home → search → "Times Square" → ride options | A looping book-a-ride GIF, framed and ready for the README |
+
+---
+
+### [Redaction Checker](https://github.com/ethanzhoucool/redaction-checker)
+
+When an app is backgrounded, the OS snapshots the current screen for the app-switcher card (iOS) and the recents thumbnail (Android). If a payment form or SSN screen is on top, that snapshot persists — one of the most commonly-failed items in a mobile pentest (OWASP MASVS-STORAGE-9 / PCI). This tool drives the app to each sensitive screen, backgrounds it, and checks whether the snapshot the OS actually wrote was obscured — `PASS`/`FAIL` with side-by-side evidence.
+
+- **iOS on a cloud device, no Mac needed** — the app switcher can't be opened through the CLI, so it pulls Control Center to make the app resign-active (the same `scenePhase != .active` trigger the OS uses to snapshot), then compares the active vs inactive frames with a blur-invariant correlation
+- **iOS locally (macOS)** — decodes the on-disk app-switcher snapshot (Apple `AAPL` → LZFSE → ASTC, no external binaries) to recover the leaked text verbatim
+- **Android** — judges the recents thumbnail, which the OS blanks for `FLAG_SECURE` windows; the live screen is evidence only, since a screenshot reads straight past `FLAG_SECURE`
+- One `FAIL` exits non-zero, so it drops straight into CI as a compliance gate
+
+```bash
+python -m redaction_check sensitive-screens.yml
+```
+
+| Screen | Verdict |
+|---|---|
+| Add Card — no privacy cover on resign | FAIL — card form still rendered when backgrounded |
+| Add Card — cover on `scenePhase` `.inactive` | PASS — snapshot replaced by an opaque cover |
 
 ---
 
